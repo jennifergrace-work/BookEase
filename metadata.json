@@ -1,0 +1,6 @@
+{
+  "name": "BookEase – Appointment Scheduling Platform",
+  "description": "A production-quality MERN appointment scheduling platform featuring role-based access for service providers and clients, real-time slot booking, calendar management, and comprehensive validation.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

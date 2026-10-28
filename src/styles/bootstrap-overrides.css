@@ -1,0 +1,260 @@
+/* ==========================================================================
+   BookEase – Nature-Inspired Bootstrap Overrides
+   Deep Forest Green, Sage, Sand, Warm Ivory
+   ========================================================================== */
+
+/* Buttons */
+.btn-primary-custom,
+.btn-primary,
+.btn-forest {
+  background-color: var(--forest-green) !important;
+  color: #FFFFFF !important;
+  border: 1px solid var(--forest-green) !important;
+  font-weight: 500;
+  border-radius: var(--radius-pill);
+  padding: 0.6rem 1.4rem;
+  transition: all 0.2s ease;
+}
+
+.btn-primary-custom:hover,
+.btn-primary:hover,
+.btn-forest:hover {
+  background-color: var(--forest-hover) !important;
+  border-color: var(--forest-hover) !important;
+  color: #FFFFFF !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(18, 61, 44, 0.2);
+}
+
+.btn-secondary-custom,
+.btn-secondary {
+  background-color: var(--sage) !important;
+  color: #123D2C !important;
+  border: 1px solid var(--sage) !important;
+  font-weight: 500;
+  border-radius: var(--radius-pill);
+  padding: 0.6rem 1.3rem;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary-custom:hover,
+.btn-secondary:hover {
+  background-color: #93A384 !important;
+  border-color: #93A384 !important;
+  color: #0E2E21 !important;
+}
+
+.btn-accent-custom,
+.btn-sand {
+  background-color: var(--sand) !important;
+  color: var(--forest-green) !important;
+  border: 1px solid var(--sand) !important;
+  font-weight: 600;
+  border-radius: var(--radius-pill);
+  padding: 0.6rem 1.4rem;
+  transition: all 0.2s ease;
+}
+
+.btn-accent-custom:hover,
+.btn-sand:hover {
+  background-color: #C6B38E !important;
+  color: #0E2E21 !important;
+  transform: translateY(-1px);
+}
+
+.btn-outline-custom,
+.btn-outline-forest,
+.btn-outline-primary {
+  background-color: transparent !important;
+  color: var(--forest-green) !important;
+  border: 1px solid var(--forest-green) !important;
+  font-weight: 500;
+  border-radius: var(--radius-pill);
+  padding: 0.6rem 1.4rem;
+  transition: all 0.2s ease;
+}
+
+.btn-outline-custom:hover,
+.btn-outline-forest:hover,
+.btn-outline-primary:hover {
+  background-color: var(--forest-green) !important;
+  border-color: var(--forest-green) !important;
+  color: #FFFFFF !important;
+}
+
+.btn-outline-sand {
+  background-color: transparent !important;
+  color: #4A3E31 !important;
+  border: 1px solid #D8CFBF !important;
+  font-weight: 500;
+  border-radius: var(--radius-pill);
+  padding: 0.6rem 1.4rem;
+  transition: all 0.2s ease;
+}
+
+.btn-outline-sand:hover {
+  background-color: #F0ECE1 !important;
+  color: var(--forest-green) !important;
+  border-color: #C8BFA8 !important;
+}
+
+.btn-danger-custom,
+.btn-danger {
+  background-color: var(--terracotta) !important;
+  color: #FFFFFF !important;
+  border: 1px solid var(--terracotta) !important;
+  border-radius: var(--radius-pill);
+  font-weight: 500;
+}
+
+.btn-danger-custom:hover,
+.btn-danger:hover {
+  background-color: #722E2E !important;
+  border-color: #722E2E !important;
+  color: #FFFFFF !important;
+}
+
+/* Form Controls */
+.form-control,
+.form-select {
+  background-color: #FFFFFF !important;
+  border: 1px solid var(--border-sand) !important;
+  color: var(--text-primary) !important;
+  border-radius: var(--radius-md) !important;
+  padding: 0.65rem 0.95rem;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--forest-green) !important;
+  box-shadow: 0 0 0 3px rgba(18, 61, 44, 0.15) !important;
+  outline: none;
+}
+
+/* Status Badges */
+.badge-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.35rem 0.8rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.badge-pending,
+.badge-status-pending {
+  background-color: rgba(74, 62, 49, 0.1);
+  color: var(--bark);
+  border: 1px solid rgba(74, 62, 49, 0.25);
+}
+
+.badge-confirmed,
+.badge-status-confirmed {
+  background-color: rgba(168, 182, 154, 0.22);
+  color: var(--forest-green);
+  border: 1px solid rgba(168, 182, 154, 0.45);
+}
+
+.badge-completed,
+.badge-status-completed {
+  background-color: var(--forest-green);
+  color: #FFFFFF;
+  border: 1px solid var(--forest-green);
+}
+
+.badge-cancelled,
+.badge-status-cancelled {
+  background-color: rgba(139, 58, 58, 0.1);
+  color: var(--terracotta);
+  border: 1px solid rgba(139, 58, 58, 0.25);
+}
+
+.badge-noshow,
+.badge-status-noshow {
+  background-color: rgba(213, 196, 161, 0.3);
+  color: #4A3E31;
+  border: 1px solid rgba(213, 196, 161, 0.6);
+}
+
+/* Date Selector Pills (Matching Panel 1 & 4) */
+.date-selector-pill {
+  flex: 1;
+  text-align: center;
+  padding: 0.55rem 0.4rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-sand);
+  background-color: #FFFFFF;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.date-selector-pill:hover {
+  border-color: var(--sage);
+  background-color: #FAF8F2;
+}
+
+.date-selector-pill.active {
+  background-color: var(--forest-green);
+  border-color: var(--forest-green);
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(18, 61, 44, 0.25);
+}
+
+.date-selector-pill.active .day-label {
+  color: var(--sand);
+}
+
+/* Time Slot Chips */
+.slot-chip {
+  padding: 0.55rem 0.75rem;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-radius: 10px;
+  border: 1px solid var(--border-sand);
+  background-color: #FFFFFF;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.slot-chip:hover:not(:disabled) {
+  border-color: var(--forest-green);
+  background-color: #FAF8F2;
+}
+
+.slot-chip.active {
+  background-color: var(--forest-green);
+  border-color: var(--forest-green);
+  color: #FFFFFF;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(18, 61, 44, 0.2);
+}
+
+.slot-chip:disabled,
+.slot-chip.unavailable {
+  background-color: #F3EFE7;
+  border-color: #E6E0D3;
+  color: #A39D90;
+  text-decoration: line-through;
+  cursor: not-allowed;
+}
+
+/* Organic Arch Containers */
+.arch-image-container {
+  overflow: hidden;
+  border-radius: 120px 120px 24px 24px;
+  box-shadow: var(--shadow-sm);
+  background-color: #E8E2D5;
+}
+
+.arch-image-landscape {
+  overflow: hidden;
+  border-radius: 180px 24px 24px 180px;
+  box-shadow: var(--shadow-md);
+}

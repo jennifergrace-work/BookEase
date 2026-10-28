@@ -1,0 +1,4 @@
+@import "bootstrap/dist/css/bootstrap.min.css";
+@import "tailwindcss";
+@import "./styles/theme.css";
+@import "./styles/bootstrap-overrides.css";

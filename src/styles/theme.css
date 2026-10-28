@@ -1,0 +1,435 @@
+/* ==========================================================================
+   BookEase – Nature-Inspired Editorial Theme
+   Deep Forest Green (#123D2C), Sage (#A8B69A), Sand (#D5C4A1), Ivory (#F8F5ED)
+   ========================================================================== */
+
+:root {
+  /* Core Nature Palette */
+  --forest-green: #123D2C;    /* Deep Pine / Forest: Navbar, CTA, Primary Buttons, Active States */
+  --forest-hover: #0B281D;    /* Dark Forest hover */
+  --sage: #A8B69A;            /* Sage Green: Badges, highlights, secondary accents */
+  --sage-light: #E7ECE3;      /* Very soft sage tint */
+  --sage-dark: #6D825E;       /* Contrast sage for text and borders */
+  --sand: #D5C4A1;            /* Warm Sand / Muted Gold accent */
+  --sand-light: #F4EFE6;      /* Sand tint for pill backgrounds */
+  --bark: #4A3E31;            /* Warm Earth / Pending */
+  --terracotta: #8B3A3A;      /* Terracotta / Cancelled */
+  
+  /* Canvas & Card Surfaces */
+  --bg-cream: #F8F5ED;        /* Warm ivory page canvas */
+  --surface: #FFFEFA;         /* Soft off-white card surface */
+  --surface-white: #FFFFFF;   /* Pure white container */
+  --border-sand: #E3DAC9;     /* Warm sand divider & border */
+  --border-light: #ECE5D8;    /* Delicate card border */
+
+  /* Text Tones */
+  --text-primary: #18342B;    /* Deep forest dark text */
+  --text-secondary: #3D4F46;  /* Forest slate readable text */
+  --text-muted: #6B7C72;      /* Gentle muted green-gray */
+  --text-light: #F8F5ED;      /* Ivory text on dark backgrounds */
+
+  /* Typography */
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-script: 'Caveat', cursive, sans-serif;
+
+  /* Radii & Shadows */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-pill: 9999px;
+
+  --shadow-sm: 0 2px 10px rgba(18, 61, 44, 0.04);
+  --shadow-md: 0 8px 24px rgba(18, 61, 44, 0.08);
+  --shadow-lg: 0 16px 40px rgba(18, 61, 44, 0.12);
+
+  /* Bootstrap Variable Mappings */
+  --bs-body-bg: var(--bg-cream);
+  --bs-body-color: var(--text-secondary);
+  --bs-primary: var(--forest-green);
+  --bs-secondary: var(--sage);
+  --bs-border-color: var(--border-sand);
+  --bs-border-radius: var(--radius-md);
+  --bs-font-sans-serif: var(--font-body);
+}
+
+body {
+  background-color: var(--bg-cream);
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-cream);
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6, .font-heading {
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.font-script {
+  font-family: var(--font-script);
+}
+
+/* Cards */
+.custom-card {
+  background-color: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.custom-card.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Botanical pill badge */
+.badge-nature-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #EFECE2;
+  color: var(--forest-green);
+  border: 1px solid #DFD9CB;
+  border-radius: var(--radius-pill);
+  padding: 0.35rem 0.85rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.hero-editorial {
+  padding: clamp(28px, 4vw, 56px) 0 clamp(36px, 5vw, 68px);
+}
+
+.hero-container {
+  z-index: 1;
+}
+
+.hero-layout {
+  --bs-gutter-x: 1.5rem;
+  min-height: 640px;
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 2;
+  padding-right: clamp(12px, 2vw, 32px);
+}
+
+.hero-title {
+  max-width: 620px;
+  font-size: clamp(3rem, 4.2vw, 4.5rem);
+  line-height: 1.04 !important;
+  margin-bottom: 1rem !important;
+}
+
+.hero-description {
+  max-width: 500px !important;
+  font-size: 1rem !important;
+  line-height: 1.58 !important;
+  margin-bottom: 1.35rem !important;
+}
+
+.hero-actions {
+  margin-bottom: 1.5rem !important;
+}
+
+.hero-trust {
+  padding-top: 1rem !important;
+}
+
+@media (min-width: 1200px) {
+  .hero-trust > div {
+    flex: 1 1 0;
+    min-width: 0;
+    gap: 0.45rem !important;
+  }
+
+  .hero-trust .fw-bold.small {
+    font-size: 0.72rem !important;
+    white-space: nowrap;
+  }
+
+  .hero-trust .text-muted {
+    font-size: 0.68rem !important;
+    white-space: nowrap;
+  }
+}
+
+.hero-visual-column {
+  position: relative;
+}
+
+.hero-visual {
+  min-height: 680px;
+  isolation: isolate;
+}
+
+.hero-organic-shape,
+.hero-sage-shape {
+  position: absolute;
+  pointer-events: none;
+}
+
+.hero-organic-shape {
+  z-index: -2;
+  top: 2%;
+  right: -7%;
+  width: 98%;
+  height: 91%;
+  background: #EDE7D8;
+  border-radius: 42% 58% 38% 62% / 46% 38% 62% 54%;
+  transform: rotate(7deg);
+}
+
+.hero-sage-shape {
+  z-index: -1;
+  top: 8%;
+  left: -9%;
+  width: 43%;
+  height: 50%;
+  background: radial-gradient(ellipse at 38% 38%, rgba(168, 182, 154, 0.88), rgba(168, 182, 154, 0.40) 56%, rgba(168, 182, 154, 0) 74%);
+  border-radius: 58% 42% 62% 38% / 44% 61% 39% 56%;
+  transform: rotate(-15deg);
+}
+
+.hero-photo {
+  position: absolute !important;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: min(680px, 72vh);
+  min-height: 590px;
+  border: 1px solid rgba(18, 61, 44, 0.12);
+  border-radius: 48% 48% 28px 28px;
+  overflow: hidden;
+  box-shadow: 0 28px 70px rgba(18, 61, 44, 0.16) !important;
+}
+
+.hero-botanical {
+  position: absolute;
+  z-index: 3;
+  width: 152px;
+  height: 190px;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.hero-botanical-top {
+  top: -16px;
+  right: -22px;
+  transform: rotate(12deg);
+}
+
+.hero-botanical-bottom {
+  right: -10px;
+  bottom: 4px;
+  width: 112px;
+  height: 140px;
+  transform: rotate(-18deg);
+}
+
+.hero-booking-card {
+  z-index: 4 !important;
+  left: -48px;
+  bottom: 32px;
+  width: min(430px, 88%);
+  border-radius: 22px !important;
+  padding: 1.35rem !important;
+  box-shadow: 0 22px 56px rgba(18, 61, 44, 0.22) !important;
+}
+
+/* Focus States */
+:focus-visible {
+  outline: 2px solid var(--forest-green);
+  outline-offset: 2px;
+}
+
+@media (max-width: 991.98px) {
+  .hero-editorial {
+    padding: 24px 0 42px;
+  }
+
+  .hero-layout {
+    row-gap: 30px;
+    min-height: 0;
+  }
+
+  .hero-copy {
+    padding-right: 12px;
+  }
+
+  .hero-title {
+    max-width: 680px;
+    font-size: clamp(2.8rem, 7vw, 4.1rem);
+  }
+
+  .hero-visual {
+    min-height: 660px;
+    margin: 0 8px;
+  }
+
+  .hero-photo {
+    width: 100%;
+    height: 540px;
+    min-height: 0;
+    border-radius: 42% 42% 24px 24px;
+  }
+
+  .hero-booking-card {
+    left: 12px;
+    bottom: 14px;
+    width: min(430px, 88%);
+  }
+}
+
+@media (max-width: 575.98px) {
+  .hero-editorial {
+    padding-top: 18px;
+  }
+
+  .hero-copy {
+    padding: 0 8px;
+  }
+
+  .hero-title {
+    font-size: clamp(2.55rem, 11vw, 3.35rem);
+  }
+
+  .hero-actions .btn {
+    padding: 0.75rem 1rem !important;
+  }
+
+  .hero-trust {
+    row-gap: 0.8rem;
+  }
+
+  .hero-visual {
+    min-height: 645px;
+    margin: 0;
+  }
+
+  .hero-photo {
+    height: 410px;
+    border-radius: 38% 38% 22px 22px;
+  }
+
+  .hero-booking-card {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 1rem !important;
+  }
+
+  .hero-booking-card .d-flex.gap-2 {
+    gap: 0.35rem !important;
+  }
+
+  .hero-booking-card .date-selector-pill,
+  .hero-booking-card .slot-chip {
+    font-size: 0.72rem;
+  }
+
+  .hero-botanical-top {
+    right: -18px;
+    width: 110px;
+    height: 138px;
+  }
+
+  .hero-botanical-bottom {
+    display: none;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1399.98px) {
+  .bookease-navbar .navbar-nav {
+    gap: 0.125rem !important;
+  }
+
+  .bookease-navbar .navbar-nav .nav-link {
+    padding-inline: 0.5rem !important;
+    font-size: 0.84rem !important;
+  }
+
+  .bookease-navbar .navbar-collapse > .d-flex {
+    gap: 0.75rem !important;
+  }
+}
+
+.bookease-navbar {
+  min-height: 64px;
+  padding-block: 0.45rem !important;
+}
+
+.bookease-navbar > .container {
+  flex-wrap: nowrap;
+  gap: 0.75rem;
+}
+
+.bookease-navbar .navbar-brand {
+  margin-right: 0;
+  white-space: nowrap;
+}
+
+.bookease-navbar .navbar-brand > div {
+  width: 34px !important;
+  height: 34px !important;
+}
+
+.bookease-navbar .navbar-brand > span {
+  font-size: 1.3rem !important;
+}
+
+.bookease-navbar .navbar-collapse {
+  min-width: 0;
+  flex-wrap: nowrap;
+}
+
+.bookease-navbar .navbar-nav {
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+.bookease-navbar .navbar-collapse > .d-flex {
+  flex-shrink: 0;
+}
+
+@media (min-width: 1400px) {
+  .bookease-navbar .navbar-nav {
+    gap: 0.125rem !important;
+  }
+
+  .bookease-navbar .navbar-nav .nav-link {
+    padding-inline: 0.6rem !important;
+    font-size: 0.88rem !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-booking-card,
+  .hero-photo,
+  .hero-botanical {
+    transition: none !important;
+  }
+}
