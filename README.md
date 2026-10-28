@@ -155,6 +155,17 @@ npm run dev
 ```
 Open your browser at `http://localhost:3000`.
 
+### 6. Deploying the frontend and API on Render
+Deploy the `server` directory as a Render Web Service, and deploy the repository root as a Render Static Site.
+
+For the API Web Service, set the root directory to `server`, build command to `npm install`, and start command to `npm start`. Configure `MONGODB_URI`, `JWT_SECRET`, `JWT_EXPIRES_IN=7d`, `NODE_ENV=production`, and `CLIENT_URL` in Render's environment settings. `CLIENT_URL` must be the frontend's exact public origin, without a trailing slash.
+
+For the Static Site, set the root directory to the repository root, build command to `npm install && npm run build`, and publish directory to `dist`. Set this build-time environment variable to the API's public URL including `/api`:
+```env
+VITE_API_BASE_URL=https://your-api-service.onrender.com/api
+```
+After changing this variable, trigger a new Static Site deployment so Vite bakes it into the frontend bundle. Keep database credentials and JWT secrets only in the API Web Service's environment settings.
+
 ---
 
 ## 📡 REST API Reference
