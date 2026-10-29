@@ -141,6 +141,11 @@ npm run seed:demo
 ```
 The seeder adds missing demo records and can be rerun safely. It connects to the `bookease` database using `MONGODB_URI` from `server/.env`; keep this file private. The demo admin and client accounts use the credentials printed by the seeder, so change or remove these accounts before using the app with real users.
 
+To check recent local registrations, connect with `mongosh "mongodb://127.0.0.1:27017/bookease"` and run:
+```javascript
+db.users.find({}, { name: 1, email: 1, role: 1, createdAt: 1 }).sort({ createdAt: -1 }).limit(10).pretty()
+```
+
 ### 5. Starting the Platform
 If the old in-memory app is already running on port 3000, stop it with `Ctrl+C` first.
 Leave the MongoDB service running.
