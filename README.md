@@ -135,11 +135,11 @@ npm install
 ```
 
 ### 4. Database Seeding (Optional)
-To add the demo users, services, schedules, and appointments to an empty database:
+To add the demo users, services, schedules, and appointments without overwriting existing records:
 ```bash
 npm run seed:demo
 ```
-Seeding stops without changing data if any of the database collections already contain records.
+The seeder adds missing demo records and can be rerun safely. It connects to the `bookease` database using `MONGODB_URI` from `server/.env`; keep this file private. The demo admin and client accounts use the credentials printed by the seeder, so change or remove these accounts before using the app with real users.
 
 ### 5. Starting the Platform
 If the old in-memory app is already running on port 3000, stop it with `Ctrl+C` first.

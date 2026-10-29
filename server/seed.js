@@ -6,22 +6,21 @@ const Availability = require('./models/Availability');
 const Appointment = require('./models/Appointment');
 const connectDB = require('./config/db');
 
+const ensureUser = async (data) => {
+  const existing = await User.findOne({ email: data.email.toLowerCase() });
+  return existing || User.create(data);
+};
+
+const ensureService = async (data) => {
+  const existing = await Service.findOne({ name: data.name });
+  return existing || Service.create(data);
+};
+
 const seedData = async () => {
   try {
     await connectDB();
-    const existingCounts = await Promise.all([
-      User.countDocuments(),
-      Service.countDocuments(),
-      Availability.countDocuments(),
-      Appointment.countDocuments(),
-    ]);
-
-    if (existingCounts.some(count => count > 0)) {
-      throw new Error('Database already contains records. Demo seeding was stopped without changing any data.');
-    }
-
-    console.log('[Seed] Inserting users...');
-    const admin = await User.create({
+    console.log('[Seed] Adding missing demo users without changing existing records...');
+    const admin = await ensureUser({
       name: 'Dr. Sarah Mitchell (Admin)',
       email: 'admin@bookease.com',
       phone: '9876543210',
@@ -30,7 +29,7 @@ const seedData = async () => {
       isActive: true,
     });
 
-    const user1 = await User.create({
+    const user1 = await ensureUser({
       name: 'John Doe',
       email: 'john.doe@example.com',
       phone: '9123456780',
@@ -39,7 +38,7 @@ const seedData = async () => {
       isActive: true,
     });
 
-    const user2 = await User.create({
+    const user2 = await ensureUser({
       name: 'Sarah Smith',
       email: 'sarah.smith@example.com',
       phone: '9988776655',
@@ -48,8 +47,8 @@ const seedData = async () => {
       isActive: true,
     });
 
-    console.log('[Seed] Inserting 5 sample services...');
-    const services = await Service.insertMany([
+    console.log('[Seed] Adding missing demo services...');
+    const serviceData = [
       {
         name: 'Executive Health & Wellness Check',
         description: 'A comprehensive 45-minute clinical wellness consultation including baseline vitals, metabolic screening, and personalized preventative care roadmap.',
@@ -95,10 +94,14 @@ const seedData = async () => {
         isActive: true,
         createdBy: admin._id,
       },
-    ]);
+    ];
+    const services = [];
+    for (const data of serviceData) {
+      services.push(await ensureService(data));
+    }
 
-    console.log('[Seed] Setting up availability schedules...');
-    await Availability.insertMany([
+    console.log('[Seed] Adding missing availability schedules...');
+    const availabilityData = [
       {
         service: services[0]._id,
         workingDays: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
@@ -144,7 +147,11 @@ const seedData = async () => {
         breakEnd: '13:00',
         blockedDates: [],
       },
-    ]);
+    ];
+    for (const data of availabilityData) {
+      const existing = await Availability.findOne({ service: data.service });
+      if (!existing) await Availability.create(data);
+    }
 
     const getOffsetDate = (offset) => {
       const d = new Date();
@@ -152,8 +159,8 @@ const seedData = async () => {
       return d.toISOString().split('T')[0];
     };
 
-    console.log('[Seed] Inserting sample appointments...');
-    await Appointment.insertMany([
+    console.log('[Seed] Adding missing sample appointments...');
+    const appointmentData = [
       {
         user: user1._id,
         service: services[0]._id,
@@ -186,20 +193,28 @@ const seedData = async () => {
         status: 'Cancelled',
         notes: 'Client rescheduled due to conflicting travel.',
       },
-    ]);
+    ];
+    for (const data of appointmentData) {
+      const existing = await Appointment.findOne({
+        user: data.user,
+        service: data.service,
+        notes: data.notes,
+      });
+      if (!existing) await Appointment.create(data);
+    }
 
     console.log('----------------------------------------------------');
-    console.log('[Seed Success] All demo users, services, schedules & appointments seeded!');
+    console.log('[Seed Success] Missing demo users, services, schedules & appointments added.');
     console.log('Demo Credentials:');
     console.log('Admin: admin@bookease.com / Admin@123');
     console.log('User:  john.doe@example.com / User@123');
     console.log('User:  sarah.smith@example.com / User@123');
     console.log('----------------------------------------------------');
-
-    process.exit(0);
   } catch (error) {
     console.error('[Seed Error]:', error);
-    process.exit(1);
+    process.exitCode = 1;
+  } finally {
+    await mongoose.disconnect();
   }
 };
 
